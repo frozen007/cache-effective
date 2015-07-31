@@ -1,0 +1,31 @@
+# DEFAULT CACHE REGION
+jcs.default=
+jcs.default.cacheattributes=org.apache.jcs.engine.CompositeCacheAttributes
+#The maximum number of items allowed in memory.
+jcs.default.cacheattributes.MaxObjects=1000
+#specify what memory manager you would like to use.
+jcs.default.cacheattributes.MemoryCacheName=org.apache.jcs.engine.memory.lru.LRUMemoryCache
+#By default, the memory shrinker is shared by all regions that use the LRU memory cache. 
+#The memory shrinker iterates through the items in memory, 
+#looking for items that have expired or that have exceeded their max memory idle time.
+jcs.default.cacheattributes.UseMemoryShrinker=false
+
+jcs.default.elementattributes=org.apache.jcs.engine.ElementAttributes
+#If an element is specified as eternal\u6c38\u751f\u6c38\u6052, then it will never be subject 
+#to removal for exceeding its max life.
+jcs.default.elementattributes.IsEternal=false
+#If you specify that elements within a region are not eternal, then you can set the max life 
+#seconds. If this is exceeded the elements will be removed passively when a client tries to 
+#retrieve them. If you are using a memory shrinker, then the items can be removed actively.
+jcs.default.elementattributes.MaxLifeSeconds=60
+#define the maximum time an item can live without being accessed
+jcs.default.elementattributes.IdleTime=60
+#determines whether or not the element can go to disk, 
+#if a disk cache is configured for the region.
+jcs.default.elementattributes.IsSpool=true
+#determines whether or not the element can be sent to a remote server, 
+#if one is configured for the region.
+jcs.default.elementattributes.IsRemote=true
+#determines whether or not the element can be laterally distributed, 
+#if a lateral auxiliary is configured for the region.
+jcs.default.elementattributes.IsLateral=true
