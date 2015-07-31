@@ -1,9 +1,9 @@
-import com.asiainno.base.cache.CacheContext;
-import com.asiainno.base.cache.CacheElement;
-import com.asiainno.base.cache.CacheManager;
-import com.asiainno.base.cache.CacheOperator;
-import com.asiainno.base.cache.CachedObject;
-import com.asiainno.base.cache.GeneralCacheDominator;
+import com.myz.base.cache.CacheContext;
+import com.myz.base.cache.CacheElement;
+import com.myz.base.cache.CacheManager;
+import com.myz.base.cache.CacheOperator;
+import com.myz.base.cache.CachedObject;
+import com.myz.base.cache.GeneralCacheDominator;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -15,6 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class TestGeneralCacheDominator {
     private static AtomicInteger lck = new AtomicInteger();
     static final CacheContext context = new CacheContext("test", 30, 5);
+
     public static void main(String[] args) throws InterruptedException {
         /*
         while(true) {
@@ -23,7 +24,7 @@ public class TestGeneralCacheDominator {
             Thread.sleep(10000);
         }*/
 
-        for(int i=0;i<10;i++) {
+        for (int i = 0; i < 10; i++) {
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -36,7 +37,7 @@ public class TestGeneralCacheDominator {
 
 
     private static String getCache() {
-        return GeneralCacheDominator.get("test", context, new CacheOperator<String>() {
+        return GeneralCacheDominator.getCachedValue("test", context, new CacheOperator<String>() {
             @Override
             public boolean lock(String key) {
                 int current = lck.get();
